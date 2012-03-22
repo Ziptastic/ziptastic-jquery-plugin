@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>Address</title>
+        <style>
+            form label, form input {
+                display: block;
+            }
+        </style>
+	</head>
+	<body>
+    	<form id="theform">
+    		<label for="fullname">
+    			Fullname:
+    			<input type="text" id="fullname" />
+    		</label>
+
+    		<label for="street-address">
+    			Address:
+    			<input type="text" id="street-address" />
+    		</label>
+
+    		<label for="city">
+    			City:
+    			<input type="text" id="city" />
+    		</label>
+
+    		<label for="state">
+    			State:
+    			<input type="text" id="state" />
+    		</label>
+
+            <label for="country">
+                Zip:
+                <input type="text" id="country" />
+            </label>
+
+    		<label for="zip">
+    			Zip:
+    			<input type="text" id="zip" />
+    		</label>
+
+    		<input type="submit" />
+    	</form>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="zippidydoda.js"></script>
+        <script type="text/javascript">
+            $('#theform').ziptastic();
+        </script>
+	</body>
+</html>

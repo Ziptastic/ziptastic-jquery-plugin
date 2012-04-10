@@ -25,7 +25,7 @@
 
     $('#zip').change(function() {
 		var client = new XMLHttpRequest();
-		client.open("GET", "http://localhost?zip=" + this.value, true);
+		client.open("GET", "http://zip.elevenbasetwo.com?zip=" + this.value, true);
 		client.onreadystatechange = function() {
 			if(client.readyState == 4) {
 				//alert(client.responseText);

@@ -22,8 +22,7 @@
 	
 	country_element.parent().hide();
 	
-
-    $('#zip').change(function() {
+	zip_element.change(function() {
 		var client = new XMLHttpRequest();
 		client.open("GET", "http://localhost?zip=" + this.value, true);
 		client.onreadystatechange = function() {
@@ -43,14 +42,6 @@
 		client.send();
 
 
-    });	
-
-	/*
-
-
-		*/
-
-
-
+	});
   };
 })( jQuery );

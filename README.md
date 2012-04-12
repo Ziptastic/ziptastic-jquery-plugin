@@ -12,6 +12,6 @@ Can be used to query for a specific zip code.
 
     $('#zip')
         .ziptastic()
-        .on('zipChange', function(country, state, city, zip) {
+        .on('zipChange', function(event, country, state, city, zip) {
             // Use the data...
         });

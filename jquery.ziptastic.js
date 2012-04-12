@@ -1,7 +1,7 @@
 (function( $ ) {
 	var requests = {};
 	var zipValid = {
-		us: /[0-9]{5}(-[0-9]{4})/
+		us: /[0-9]{5}(-[0-9]{4})?/
 	};
 
 	$.ziptastic = function(zip, callback){

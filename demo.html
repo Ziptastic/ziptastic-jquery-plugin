@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>Zip Code Lookup Demo</title>
+        <style>
+            form label, form input {
+                display: block;
+            }
+        </style>
+	</head>
+	<body>
+    	<form id="theform">
+    		<label for="zip">
+    			Zip:
+    			<input type="text" id="zip" />
+    		</label>
+
+            <label for="city">
+                City:
+                <input type="text" id="city" />
+            </label>
+
+            <label for="state">
+                State:
+                <input type="text" id="state" />
+            </label>
+
+            <label for="country">
+                Country:
+                <input type="text" id="country" />
+            </label>
+
+    		<input type="submit" />
+    	</form>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.ziptastic.js"></script>
+        <script type="text/javascript">
+            (function($) {
+                $(function() {
+                    var duration = 500;
+
+                    var elements = {
+                        country: $('#country'),
+                        state: $('#state'),
+                        city: $('#city'),
+                        zip: $('#zip')
+                    }
+
+                    // Initially hide the city/state/zip
+                    elements.country.parent().hide();
+                    elements.state.parent().hide();
+                    elements.city.parent().hide();
+
+                    // Initialize the ziptastic and bind to the change of zip code
+                    elements.zip.ziptastic()
+                        .on('zipChange', function(evt, country, state, city, zip) {
+                            elements.country.val(country).parent().show(duration);
+                            elements.state.val(state).parent().show(duration);
+                            elements.city.val(city).parent().show(duration);
+                        });
+                });
+            }(jQuery));
+        </script>
+	</body>
+</html>

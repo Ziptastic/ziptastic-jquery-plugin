@@ -18,3 +18,6 @@ Can be used to query for a specific zip code.
 
 ## Notes
     Currently the database is US only. Next addition is Canada. We will try and get that added this weekend :)
+
+Update:
+    Looks like there's licensing issues with the Canadian database. Looking into the options.

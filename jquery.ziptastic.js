@@ -23,7 +23,7 @@
 		return this.each(function() {
 			var ele = $(this);
 
-			ele.on('input change', function() {
+			ele.on('keyup', function() {
 				var zip = ele.val();
 
 				// TODO Non-US zip codes?

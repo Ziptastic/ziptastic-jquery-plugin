@@ -4,19 +4,25 @@
 		us: /[0-9]{5}(-[0-9]{4})?/
 	};
 
-	$.ziptastic = function(zip, callback){
+	$.ziptastic = function(country, zip, callback){
+		country = country.toUpperCase();
 		// Only make unique requests
-		if(!requests[zip]) {
-			requests[zip] = $.getJSON('http://zip.elevenbasetwo.com/v2/US/' + zip);
+		if(!requests[country]) {
+			requests[country] = {};
+		}
+		if(!requests[country][zip]) {
+			requests[country][zip] = $.getJSON('http://zip.elevenbasetwo.com/v2/' + country + '/' + zip);
 		}
 
 		// Bind to the finished request
-		requests[zip].done(function(data) {
-			callback(data.country, data.state, data.city, zip);
+		requests[country][zip].done(function(data) {
+			if (typeof callback == 'function') {
+				callback(data.country, data.state, data.city, zip);
+			}
 		});
 
 		// Allow for binding to the deferred object
-		return requests[zip];
+		return requests[country][zip];
 	};
 
 	$.fn.ziptastic = function( options ) {
@@ -28,10 +34,10 @@
 
 				// TODO Non-US zip codes?
 				if(zipValid.us.test(zip)) {
-					$.ziptastic(zip, function(country, state, city) {
+					$.ziptastic('US', zip, function(country, state, city) {
 						// Trigger the updated information
 						ele.trigger('zipChange', [country, state, city, zip]);
-					})
+					});
 				}
 			});
 		});

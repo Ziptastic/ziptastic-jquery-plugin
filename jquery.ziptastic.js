@@ -5,6 +5,13 @@
 	};
 
 	$.ziptastic = function(country, zip, callback){
+		// If only zip and callback are given default to US
+		if (arguments.length == 2 && typeof arguments[1] == 'function') {
+			callback = arguments[1];
+			zip = arguments[0];
+			country = 'US';
+		}
+
 		country = country.toUpperCase();
 		// Only make unique requests
 		if(!requests[country]) {
@@ -34,7 +41,7 @@
 
 				// TODO Non-US zip codes?
 				if(zipValid.us.test(zip)) {
-					$.ziptastic('US', zip, function(country, state, city) {
+					$.ziptastic(zip, function(country, state, city) {
 						// Trigger the updated information
 						ele.trigger('zipChange', [country, state, city, zip]);
 					});

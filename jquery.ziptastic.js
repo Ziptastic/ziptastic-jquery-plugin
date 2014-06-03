@@ -7,12 +7,12 @@
 	$.ziptastic = function(zip, callback){
 		// Only make unique requests
 		if(!requests[zip]) {
-			requests[zip] = $.getJSON('http://zip.elevenbasetwo.com/v2/US/' + zip);
+			requests[zip] = $.getJSON('http://zip.getziptastic.com/v2/US/' + zip);
 		}
 
 		// Bind to the finished request
 		requests[zip].done(function(data) {
-			callback(data.country, data.state, data.city, zip);
+			callback(data.country, data.state, data.state_short, data.city, zip);
 		});
 
 		// Allow for binding to the deferred object
@@ -28,9 +28,9 @@
 
 				// TODO Non-US zip codes?
 				if(zipValid.us.test(zip)) {
-					$.ziptastic(zip, function(country, state, city) {
+					$.ziptastic(zip, function(country, state, state_short, city) {
 						// Trigger the updated information
-						ele.trigger('zipChange', [country, state, city, zip]);
+						ele.trigger('zipChange', [country, state, state_short, city, zip]);
 					})
 				}
 			});

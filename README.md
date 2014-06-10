@@ -4,7 +4,7 @@
 
 Can be used to query for a specific zip code.
 
-    $.ziptastic(48867, function(country, state, city, zip){
+    $.ziptastic(48867, function(country, state, state_short, city, zip){
         // Use the data...
     })
 
@@ -12,12 +12,6 @@ Can be used to query for a specific zip code.
 
     $('#zip')
         .ziptastic()
-        .on('zipChange', function(event, country, state, city, zip) {
+        .on('zipChange', function(event, country, state, state_short, city, zip) {
             // Use the data...
         });
-
-## Notes
-    Currently the database is US only. Next addition is Canada. We will try and get that added this weekend :)
-
-Update:
-    Looks like there's licensing issues with the Canadian database. Looking into the options.

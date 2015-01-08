@@ -1,78 +1,81 @@
 <html>
 	<head>
 		<title>Zip Code Lookup Demo</title>
-        <style>
-            form label, form input {
-                display: block;
-            }
-        </style>
+		<style>
+			form label, form input {
+				display: block;
+			}
+		</style>
 	</head>
 	<body>
-    	<form id="theform">
-    		<label for="zip">
-    			Zip:
-    			<input type="text" id="zip" />
-    		</label>
+		<form id="theform">
+			<label for="zip">
+				Zip:
+				<input type="text" id="zip" />
+			</label>
 
-            <label for="city">
-                City:
-                <input type="text" id="city" />
-            </label>
+			<label for="city">
+				City:
+				<input type="text" id="city" />
+			</label>
 
-            <label for="state">
-                State:
-                <input type="text" id="state" />
-            </label>
+			<label for="state">
+				State:
+				<input type="text" id="state" />
+			</label>
 
-            <label for="state-short">
-                State Short:
-                <input type="text" id="state-short" />
-            </label>
+			<label for="state-short">
+				State Short:
+				<input type="text" id="state-short" />
+			</label>
 
-            <label for="country">
-                Country:
-                <input type="text" id="country" />
-            </label>
+			<label for="country">
+				Country:
+				<input type="text" id="country" />
+			</label>
 
-    		<input type="submit" />
-    	</form>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-        <script type="text/javascript" src="jquery.ziptastic.js"></script>
-        <script type="text/javascript">
-            (function($) {
-                $(function() {
-                    var duration = 500;
+			<input type="submit" />
+		</form>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="jquery.ziptastic.js"></script>
+		<script type="text/javascript">
+			(function($) {
+				$(function() {
+					var duration = 500;
 
-                    var elements = {
-                        country: $('#country'),
-                        state: $('#state'),
-                        state_short: $('#state-short'),
-                        city: $('#city'),
-                        zip: $('#zip')
-                    }
+					var elements = {
+						country: $('#country'),
+						state: $('#state'),
+						state_short: $('#state-short'),
+						city: $('#city'),
+						zip: $('#zip')
+					}
 
-                    // Initially hide the city/state/zip
-                    elements.country.parent().hide();
-                    elements.state.parent().hide();
-                    elements.state_short.parent().hide();
-                    elements.city.parent().hide();
+					// Initially hide the city/state/zip
+					elements.country.parent().hide();
+					elements.state.parent().hide();
+					elements.state_short.parent().hide();
+					elements.city.parent().hide();
 
-                    // Initialize the ziptastic and bind to the change of zip code
-                    elements.zip.ziptastic()
-                        .on('zipChange', function(evt, country, state, state_short, city, zip) {
-                            // Country
-                            elements.country.val(country).parent().show(duration);
+					// Initialize the ziptastic and bind to the change of zip code
+					var options = {
+						"key": "",
+						"country": "US"
+					}
+					elements.zip.ziptastic(options)
+						.on('zipChange', function(evt, country, state, state_short, city, zip) {
+							// Country
+							elements.country.val(country).parent().show(duration);
 
-                            // State
-                            elements.state_short.val(state_short).parent().show(duration);
-                            elements.state.val(state).parent().show(duration);
+							// State
+							elements.state_short.val(state_short).parent().show(duration);
+							elements.state.val(state).parent().show(duration);
 
-                            // City
-                            elements.city.val(city).parent().show(duration);
-
-                        });
-                });
-            }(jQuery));
-        </script>
+							// City
+							elements.city.val(city).parent().show(duration);
+						});
+				});
+			}(jQuery));
+		</script>
 	</body>
 </html>

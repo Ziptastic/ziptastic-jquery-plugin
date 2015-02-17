@@ -18,7 +18,7 @@
 			requests[country] = {};
 		}
 		if(!requests[country][zip]) {
-			requests[country][zip] = $.getJSON('http://zip.getziptastic.com/v2/' + country + '/' + zip);
+			requests[country][zip] = $.getJSON('https://zip.getziptastic.com/v2/' + country + '/' + zip);
 		}
 
 		// Bind to the finished request

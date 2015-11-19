@@ -1,6 +1,6 @@
-![Ziptsatic Logo](https://www.getziptastic.com/static/images/ziptastic-logo.png)
-
 # Official Ziptastic jQuery plugin!
+[![Ziptsatic Logo](https://www.getziptastic.com/static/images/ziptastic-logo.png)](https://www.getziptastic.com)
+
 Seamlessly integrate [Ziptastic!](https://www.getziptastic.com) with jQuery
 
 ## Usage

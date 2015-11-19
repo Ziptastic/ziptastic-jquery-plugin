@@ -1,5 +1,7 @@
-# ziptastic-jquery
-> Seamlessly integrate [Ziptastic!](https://www.getziptastic.com) with jQuery
+![Ziptsatic Logo](https://www.getziptastic.com/static/images/ziptastic-logo.png)
+
+# Official Ziptastic jQuery plugin!
+Seamlessly integrate [Ziptastic!](https://www.getziptastic.com) with jQuery
 
 ## Usage
 

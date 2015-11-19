@@ -1,17 +1,24 @@
+# ziptastic-jquery
+> Seamlessly integrate [Ziptastic!](https://www.getziptastic.com) with jQuery
+
 ## Usage
 
-### Standalone lookup
+#### Standalone Lookup
 
 Can be used to query for a specific zip code.
 
-    $.ziptastic(48867, function(country, state, state_short, city, zip){
-        // Use the data...
-    })
+```js
+$.ziptastic(48867, function(country, state, stateCode, city, zip) {
+  // Match found.
+});
+```
 
-### Element Selector
+#### Input Keyup Wrapper
 
-    $('#zip')
-        .ziptastic()
-        .on('zipChange', function(event, country, state, state_short, city, zip) {
-            // Use the data...
-        });
+```js
+$('input.zip')
+  .ziptastic()
+  .on('zipChange', function(event, country, state, stateCode, city, zip) {
+    // Match found.
+  });
+```

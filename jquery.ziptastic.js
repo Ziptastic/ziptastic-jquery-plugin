@@ -18,7 +18,13 @@
 			requests[country] = {};
 		}
 		if(!requests[country][zip]) {
-			requests[country][zip] = $.getJSON(location.protocol + '//zip.getziptastic.com/v2/' + country + '/' + zip);
+			var protocol = '';
+			if (location.protocol == 'file:') {
+				protocol = 'https://';
+			} else {
+				protocol = location.protocol;
+			}
+			requests[country][zip] = $.getJSON(protocol + '//zip.getziptastic.com/v2/' + country + '/' + zip);
 		}
 
 		// Bind to the finished request

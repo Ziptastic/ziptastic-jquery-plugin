@@ -11,16 +11,44 @@ Can be used to query for a specific zip code.
 
 ```js
 $.ziptastic(48867, function(country, state, stateCode, city, zip) {
-  // Match found.
+  console.log(country, state, stateCode, city, zip);
 });
 ```
 
 #### Input Keyup Wrapper
 
 ```js
-$('input.zip')
-  .ziptastic()
-  .on('zipChange', function(event, country, state, stateCode, city, zip) {
-    // Match found.
-  });
+var duration = 500;
+
+var elements = {
+    country: $('#country'),
+    state: $('#state'),
+    state_short: $('#state-short'),
+    city: $('#city'),
+    zip: $('#zip')
+}
+
+// Initially hide the city/state/zip
+elements.country.parent().hide();
+elements.state.parent().hide();
+elements.state_short.parent().hide();
+elements.city.parent().hide();
+
+var options = {
+    "key": "<your-api-key-here>",
+    "country": "US"
+}
+elements.zip.ziptastic(options)
+    .on('zipChange', function(evt, country, state, state_short, city, zip) {
+        // Country
+        elements.country.val(country).parent().show(duration);
+
+        // State
+        elements.state_short.val(state_short).parent().show(duration);
+        elements.state.val(state).parent().show(duration);
+
+        // City
+        elements.city.val(city).parent().show(duration);
+    });
+});
 ```

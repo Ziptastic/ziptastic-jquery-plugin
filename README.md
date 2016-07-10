@@ -10,12 +10,12 @@ Seamlessly integrate [Ziptastic!](https://www.getziptastic.com) with jQuery
 Can be used to query for a specific zip code.
 
 ```js
-$.ziptastic(48867, function(country, state, stateCode, city, zip) {
+$.ziptastic('US', 48867, 'your-api-key-here', function(country, state, stateCode, city, zip) {
   console.log(country, state, stateCode, city, zip);
 });
 ```
 
-#### Input Keyup Wrapper
+#### Input Keyup Wrapper with forward geocoding (postal code)
 
 ```js
 var duration = 500;
@@ -51,4 +51,16 @@ elements.zip.ziptastic(options)
         elements.city.val(city).parent().show(duration);
     });
 });
+```
+
+#### Using Reverse Geocoding
+
+Just set `reverseGeo` to `true` in the `options` object.
+
+```js
+var options = {
+    "key": "<your-api-key-here>",
+    "reverseGeo": true,
+    "country": "US"
+}
 ```

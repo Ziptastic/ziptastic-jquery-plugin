@@ -3,12 +3,12 @@
 	var zipValid = {
 		us: /[0-9]{5}(-[0-9]{4})?/
 	};
-    var protocol = '';
-    if (location.protocol == 'file:') {
-        protocol = 'https://';
-    } else {
-        protocol = location.protocol;
-    }
+	var protocol = '';
+	if (location.protocol == 'file:') {
+		protocol = 'https://';
+	} else {
+		protocol = location.protocol;
+	}
 	var referrer = document.location.origin + document.location.pathname;
 
  	$.ziptastic = function(country, zip, key, callback) {
@@ -72,35 +72,35 @@
 	$.fn.ziptastic = function( options ) {
 		return this.each(function() {
 			var ele = $(this);
-            if (options.reverseGeo == true) {
-                var geoSuccess = function(position) {
-                    $.reverseZiptastic(position.coords.latitude, position.coords.longitude, options.key, function(country, state, state_short, city){
-                        ele.trigger('zipChange', [country, state, state_short, city, zip]);
-                    });
-                }
+			if (options.reverseGeo == true) {
+				var geoSuccess = function(position) {
+					$.reverseZiptastic(position.coords.latitude, position.coords.longitude, options.key, function(country, state, state_short, city){
+						ele.trigger('zipChange', [country, state, state_short, city, zip]);
+					});
+				}
 
-                var geoError = function(e) {
-                    error(e);
-                }
+				var geoError = function(e) {
+					error(e);
+				}
 
-                if (navigator.geolocation) {
-                  navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-                } else {
-                   console.log('Geolocation is not supported by your browser.');
-                }
+				if (navigator.geolocation) {
+				  navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+				} else {
+				   console.log('Geolocation is not supported by your browser.');
+				}
 
-            } else {
+			} else {
 
-    			ele.on('keyup change', function() {
-    				var zip = ele.val();
-        			if(zipValid.us.test(zip)) {
-        				$.ziptastic(options.country, zip, options.key, function(country, state, state_short, city) {
-        					// Trigger the updated information
-        					ele.trigger('zipChange', [country, state, state_short, city, zip]);
-        				});
-        			}
-    			});
-            }
+				ele.on('keyup change', function() {
+					var zip = ele.val();
+					if(zipValid.us.test(zip)) {
+						$.ziptastic(options.country, zip, options.key, function(country, state, state_short, city) {
+							// Trigger the updated information
+							ele.trigger('zipChange', [country, state, state_short, city, zip]);
+						});
+					}
+				});
+			}
 		});
 	};
 })( jQuery );

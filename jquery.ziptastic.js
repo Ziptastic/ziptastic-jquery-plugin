@@ -1,7 +1,7 @@
 (function( $ ) {
 	var requests = {};
 	var zipValid = {
-		us: /^[a-z0-9]+$/i
+		pattern: /^[a-z0-9]+$/i
 	};
 	var protocol = '';
 	if (location.protocol == 'file:') {
@@ -93,7 +93,7 @@
 
 				ele.on('keyup change', function() {
 					var zip = ele.val();
-					if(zipValid.us.test(zip)) {
+					if(zipValid.pattern.test(zip)) {
 						$.ziptastic(options.country, zip, options.key, function(country, state, state_short, city) {
 							// Trigger the updated information
 							ele.trigger('zipChange', [country, state, state_short, city, zip]);

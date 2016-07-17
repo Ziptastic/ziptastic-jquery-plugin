@@ -1,7 +1,7 @@
 (function( $ ) {
 	var requests = {};
 	var zipValid = {
-		us: /[0-9]{5}(-[0-9]{4})?/
+		us: /^[a-z0-9]+$/i
 	};
 	var protocol = '';
 	if (location.protocol == 'file:') {

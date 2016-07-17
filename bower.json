@@ -1,0 +1,30 @@
+{
+  "name": "jquery-ziptastic",
+  "description": "Easy to use jQuery plugin for GetZiptastic.com. Supporting forward and reverse geocoding.",
+  "main": "jquery.ziptastic.js",
+  "authors": [
+    "Thomas Schultz"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ziptastic",
+    "getziptastic",
+    "geocoding",
+    "forward",
+    "reverse",
+    "postal",
+    "code",
+    "zipcode"
+  ],
+  "homepage": "https://github.com/daspecster/ziptastic-jquery-plugin",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}
